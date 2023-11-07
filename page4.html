@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Obshejitie</title>
+
+  <link href="style2.css" rel="stylesheet" type="text/css" />
+  
+  <link
+    href="https://fonts.cdnfonts.com/css/cinzel-decorative"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.cdnfonts.com/css/roboto-condensed"
+    rel="stylesheet"
+  />
+</head>
+  <body>
+    
+    
+<section>
+      <header >
+        <h1>Welcome - Общежитие.</h1>
+        
+        <img src="img\dove1.png" alt="a simple dove logo" />
+      </header>
+      
+      <nav>
+        <ul>
+          <li><a href="index.html"><span>Главная</span></a></li>
+          <li><a href="page1.html">Новости и объявления</a></li>
+          <li><a href="page2.html">Регистрация</a></li>
+          <li><a href="page3.html">Войти</a></li>
+          <li><a href="page4.html">Анкета проживающего</a></li>
+        </ul>
+      </nav>
+</section>
+<br>
+<br>
+<br>
+
+
+    <main>
+      
+      <h1>Анкета проживающего</h1>
+      <p>
+      <table align="center">
+        <tr>
+          <td><h2>Анкета проживающего</h2></td>
+        </tr>
+        
+        <tr>
+          <td><h3>Прибыл <input type="text" id="inputsmallpr"> 20<input type="text" class="fornum" id="year">г Номер <input type="text" class="fornum" id="num"></h3></td>
+        </tr>
+        <tr><td><h3>ПОЖАЛУЙСТА, ПЕРЕД ЗАПОЛНЕНИЕМ АНКЕТЫ ОЗНАКОМЬТЕСЬ С ПРАВИЛАМИ ПРЕБЫВАНИЯ В ОБЩЕЖИТИЕ</h3></td> </tr>
+        <tr><td><h3>введите полное имя <input type="Введите ФИО" id="fullname"></h3></td></tr>
+        <tr><td><h3>Паспорт <input type="серия" class="smallinput" id="pasone"> № <input type="№" class="smallinput" id="pastwo"></h3></td</tr>
+        <tr><td><h3>Выдан</h3> <input type="text" id="give"></td></tr>
+        <tr><td><h3>Адрес регистрации</h3> <input type="text" id="addres"></td></tr>
+        <tr><td><h3>Количество человек в номере <input type="text" class="smallerinput" id="numone"> количество доп. мест <input type="text" class="smallerinput" id="numtwo"></h3></td></tr>
+        <tr><td><button href="main_file.php"class="gradient-button" onclick="save_input_data()">Отправить</button>
+        
+      </td</tr>
+      </table>
+      </p>
+      
+    </main>
+    <footer id="footerforpage">
+      <p>Тех поддержка: <strong>saruman280202@rambler.ru</strong></p>
+    </footer>
+
+    <script>
+      function save_input_data() {
+        var Arrival = document.getElementById("inputsmallpr").value;
+        var Year = '20' + document.getElementById("year").value;
+        var Num = document.getElementById("num").value;
+        var FullName = document.getElementById("fullname").value;
+        var Serial =document.getElementById("pasone").value;
+        var Number = document.getElementById("pastwo").value;
+        var Issued = document.getElementById("give").value;
+        var Addr = document.getElementById("addres").value;
+        var AmountPers = document.getElementById("numone").value;
+        var AmountPlase =document.getElementById("numtwo").value;
+
+        var data = {
+          arr: Arrival,
+          year:Year,
+          num:Num,
+          full_name: FullName,
+          ser:Serial,
+          numb:Number,
+          iss:Issued,
+          add:Addr,
+          amper:AmountPers,
+          amplace:AmountPlase,
+        };
+
+        // Создание ссылки для скачивания файла JSON
+        var jsonData = JSON.stringify(data);
+        var blob = new Blob([jsonData], { type: "application/json" });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = "data.json";
+        link.click();
+      }
+    </script>
+  </body>
+</html>
